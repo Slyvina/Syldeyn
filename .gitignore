@@ -1,0 +1,14 @@
+# Visual Crap
+.vs
+
+# No Windows Exes
+Exe
+*.exe
+*.obj
+x64
+
+# No Syldeyn generated data
+MKL_*
+
+# No Linux executables
+LinuxExe
