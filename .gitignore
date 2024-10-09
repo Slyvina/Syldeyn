@@ -12,3 +12,5 @@ MKL_*
 
 # No Linux executables
 LinuxExe
+/Syldeyn_Import/bin
+/Syldeyn_Import/obj
