@@ -36,6 +36,7 @@
 #include <JCR6_Write.hpp>
 #include <SlyvDir.hpp>
 #include <SlyvSilly.hpp>
+#include <SlyvRoman.hpp>
 
 using namespace Slyvina::Units;
 using namespace Slyvina::JCR6;
@@ -304,9 +305,16 @@ namespace Slyvina {
 					// TODO: Top line (used in shell and Python)
 					BW->WriteLine(p + " License:");
 					auto nversion{ TrSPrintF("%02d.%02d.%02d",CurrentYear() % 100,CurrentMonth(),CurrentDay()) };
+					auto nversionr{ 0 };
+					if (nversion == SylCfg->Value(a, "Version")) {
+						nversionr = SylCfg->IntValue(a, "VersionR") + 1;
+						QCol->Doing("Same", nversionr);
+					}
 					for (auto bl : Blk->License) {
-						auto ll{ StReplace(bl, "<$version>",nversion) };
-						ll = StReplace(ll, "[$version]", nversion);
+						auto rpversion{ nversion };
+						if (nversionr) rpversion += " " + ToRoman(nversionr);
+						auto ll{ StReplace(bl, "<$version>",rpversion) };
+						ll = StReplace(ll, "[$version]", rpversion);
 						ll = StReplace(ll, "<$years>", cpyYear);
 						ll = StReplace(ll, "[$years]", cpyYear);
 						ll = StReplace(ll, "<$thisfile>", a);
@@ -325,6 +333,7 @@ namespace Slyvina {
 					SylCfg->Value(a, "Time", FileTimeStamp(TDir + "/" + a));
 					SylCfg->Value(a, "Size", FileSize(TDir + "/" + a));
 					SylCfg->Value(a, "Version", nversion);
+					SylCfg->Value(a, "VersionR", nversionr);
 				}
 			}
 #pragma endregion
