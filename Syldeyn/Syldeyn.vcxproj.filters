@@ -69,6 +69,9 @@
     <ClCompile Include="..\..\..\Libs\Units\Source\SlyvQCol.cpp">
       <Filter>Source Files\Slyvina\Units</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Libs\Units\Source\SlyvRoman.cpp">
+      <Filter>Source Files\Slyvina\Units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Syldeyn_Config.hpp">
