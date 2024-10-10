@@ -22,7 +22,7 @@
 // 	Please note that some references to data like pictures or audio, do not automatically
 // 	fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 24.10.10 II
+// Version: 24.10.10 III
 // End License
 
 #include "Syldeyn_Config.hpp"
@@ -89,7 +89,7 @@ namespace Slyvina {
 				BlocksByName[B->Name] = SB;
 				BlocksByID[B->ID] = SB;
 				B->Fields = *LF;
-				std::cout << "Debug block #" << num << ": " << SB->Name << "; (" << SB->ID << ")\n";
+				// std::cout << "Debug block #" << num << ": " << SB->Name << "; (" << SB->ID << ")\n";
 				for (auto LLL : *LL) {
 					auto NL{ StReplace(LLL,"<$tab>","\t") }; NL = StReplace(NL, "<$spc>", " ");
 					if (Upper(LLL) == "$WL") B->License.push_back(""); else B->License.push_back(NL);
@@ -107,12 +107,12 @@ namespace Slyvina {
 			auto TDir{ Dir };
 			while (!FileExists(TDir + "/MKL_Syldeyn.ini")) {
 				//QCol->Doing("->", TDir);
-				if (FileExists(TDir + "/License.MKL.ini")) {
+				if (FileExists(TDir + "/License.MKL.gini")) {
 #ifdef SlyvWindows
 					QCol->Doing("Converting", TDir);
-					auto rc = system(String(SyldeynDir + " \"" + TDir + "\"").c_str());
+					auto rc = system(String(SyldeynDir+"/Syldeyn_Import  \"" + TDir + "\"").c_str());
 					if (rc) { QCol->Error(TrSPrintF("Converter program threw an error (%d)", rc)); return; }
-					if (!FileExists(TDir + "/MKL_Syndeyn.ini")) { QCol->Error("Converter threw no error, but Syldeyn data appears not to be generated"); return; }
+					if (!FileExists(TDir + "/MKL_Syldeyn.ini")) { QCol->Error("Converter threw no error, but Syldeyn data appears not to be generated"); return; }
 					break; // All's well, so no futher operation needed.
 #else
 					QCol->Error("MKL license found for this project, but no Syldeyn data");
@@ -191,7 +191,7 @@ namespace Slyvina {
 #pragma region Scan
 			QCol->Doing("Scanning", TDir);
 			for (auto a : *SylDir) {
-				auto ad{ ExtractDir(a) }, ae{ Upper(ExtractExt(a)) };
+				auto ad{ ExtractDir(a) }, ae{ Upper(ExtractExt(a)) }; 
 				auto Known{ SylCfg->BoolValue(a,"Known") }, Allow{ (!VecHasString(SylCfg->List(":Dirs:","Ignore"),ad)) && Prefixes.count(ae) };
 				//std::cout << "DEBUG: " << Known << Allow << (!VecHasString(SylCfg->List(":Dirs:", "Ignore"), ad)) << Prefixes.count(ae) << ": " << a << "/" << ad << "/" << ae << "\n";
 				if (!Allow) continue;
@@ -224,7 +224,10 @@ namespace Slyvina {
 				}
 				Allow = SylCfg->BoolValue(a, "Allow");
 				auto Modified{ false }; // Must normally be false, but can be set to 'true' for debugging reasons. Then all files will always count as "modified".
-				Modified = Modified || FileTimeStamp(TDir + "/" + a) != SylCfg->IntValue(a, "Time");
+				if (SylCfg->BoolValue(a, "Time.Ignore")) {
+					SylCfg->BoolValue(a, "Time.Ignore", false);
+					SylCfg->Value(a, "Time", FileTimeStamp(TDir + "/" + a));
+				} else Modified = Modified || FileTimeStamp(TDir + "/" + a) != SylCfg->IntValue(a, "Time");
 				Modified = Modified || FileSize(TDir + "/" + a) != SylCfg->IntValue(a, "Size");
 				if (Allow && Modified) {
 					QCol->Doing("Updating", a);
@@ -250,7 +253,7 @@ namespace Slyvina {
 					auto iYear{ Ask(SylCfg,a,"iYear","Initial Year:",cYear) };
 					auto cpyYear{ SylCfg->NewValue(a,"cYear",iYear) };
 					if (!Suffixed(cpyYear, cYear)) {
-						QCol->Doing("Year correction: " + cpyYear, " -> ");
+						QCol->Doing("Year correction: " , cpyYear, " -> ");
 						cpyYear + ", " + cYear;
 						SylCfg->Value(a, "cYear", cpyYear);
 						QCol->LGreen(cpyYear + "\n");

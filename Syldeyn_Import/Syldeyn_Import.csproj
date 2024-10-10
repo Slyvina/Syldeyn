@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\Ask.cs" Link="Units\Ask.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\Dirry.cs" Link="Units\Dirry.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\Fmt.cs" Link="Units\Fmt.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\GINI Is Not Ini.cs" Link="Units\GINI Is Not Ini.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\GINIE.cs" Link="Units\GINIE.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\Maps.cs" Link="Units\Maps.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\mkl.cs" Link="Units\mkl.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\qstr.cs" Link="Units\qstr.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\qstream.cs" Link="Units\qstream.cs" />
+    <Compile Include="..\..\..\..\VisualStudio\TrickyUnits\QuickConsoleColors.cs" Link="Units\QuickConsoleColors.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Units\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="pwsh E:\Projects\Applications\Slyvina\Tools\Syldeyn\Syldeyn_Import\Syldeyn_Copy.ps1" />
+  </Target>
+
+</Project>
