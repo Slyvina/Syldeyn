@@ -30,6 +30,6 @@ SyldeynOutput = "SConsOut/%s/%%s"%platform.system()
 
 SyldeynEnv = Environment(CPPPATH=SyldeynIncludeDirs)
 
-SyldeynEnv.program(SyldeynOutput%"syldeyn",SyldeynFiles)
+SyldeynEnv.Program(SyldeynOutput%"syldeyn",SyldeynFiles)
 
 
