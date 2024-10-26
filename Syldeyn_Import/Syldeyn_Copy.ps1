@@ -22,7 +22,7 @@
 # 	Please note that some references to data like pictures or audio, do not automatically
 # 	fall under this licenses. Mostly this is noted in the respective files.
 # 
-# Version: 24.10.10
+# Version: 24.10.10 I
 # End License
 echo "Copying importer to exe folder" 
 cp Scyndi:\Projects\Applications\Slyvina\Tools\Syldeyn\Syldeyn_Import\bin\Release\net8.0\*.exe Scyndi:\Projects\Applications\Slyvina\Tools\Syldeyn\Exe

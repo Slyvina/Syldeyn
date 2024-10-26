@@ -22,7 +22,7 @@
 // 	Please note that some references to data like pictures or audio, do not automatically
 // 	fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 24.10.10 III
+// Version: 24.10.20
 // End License
 
 #include "Syldeyn_Config.hpp"
@@ -254,7 +254,7 @@ namespace Slyvina {
 					auto cpyYear{ SylCfg->NewValue(a,"cYear",iYear) };
 					if (!Suffixed(cpyYear, cYear)) {
 						QCol->Doing("Year correction: " , cpyYear, " -> ");
-						cpyYear + ", " + cYear;
+						cpyYear += ", " + cYear;
 						SylCfg->Value(a, "cYear", cpyYear);
 						QCol->LGreen(cpyYear + "\n");
 					}
@@ -355,7 +355,7 @@ int main(int arglen, char** args) {
 	GetBlocks();
 	if (arglen <= 1) Process(CurrentDir());
 	else for (int i = 1; i < arglen; i++) Process(args[i]);
-	QCol->LCyan("Ok");
+	QCol->LCyan("Ok\n");
 	QCol->Reset();
 	return 0;
 }
