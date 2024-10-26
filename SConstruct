@@ -18,7 +18,7 @@ SyldeynFiles = [
     "../../Libs/Units/Source/SlyvStream.cpp",
     "../../Libs/Units/Source/SlyvString.cpp",
     "../../Libs/Units/Source/SlyvTime.cpp",
-    "Syldeyn.cpp"
+    "Syldeyn/Syldeyn.cpp"
 ]
 
 SyldeynIncludeDirs = [
