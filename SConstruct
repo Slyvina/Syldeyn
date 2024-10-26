@@ -22,8 +22,8 @@ SyldeynFiles = [
 ]
 
 SyldeynIncludeDirs = [
-    "../../../Libs/JCR6/Headers",
-    "../../../Libs/Units/Headers"
+    "../../Libs/JCR6/Headers",
+    "../../Libs/Units/Headers"
 ]
 
 SyldeynOutput = "SConsOut/%s/%%s"%platform.system()
