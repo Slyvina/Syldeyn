@@ -5,7 +5,7 @@
 // 
 // 
 // 
-// 	(c) Jeroen P. Broks, 2024
+// 	(c) Jeroen P. Broks, 2024, 2025
 // 
 // 		This program is free software: you can redistribute it and/or modify
 // 		it under the terms of the GNU General Public License as published by
@@ -22,12 +22,13 @@
 // 	Please note that some references to data like pictures or audio, do not automatically
 // 	fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 24.10.20
+// Version: 25.01.11
 // End License
 
 #include "Syldeyn_Config.hpp"
 
 #include <SlyvQCol.hpp>
+#include <SlyvDirry.hpp>
 #include <SlyvString.hpp>
 #include <SlyvStream.hpp>
 #include <SlyvAsk.hpp>
@@ -45,6 +46,7 @@ using namespace Slyvina::JCR6;
 
 namespace Slyvina {
 	namespace Syldeyn {
+	    GINIE SyldeynConfig{nullptr};
 		String SyldeynDir{ "" };
 		std::map<String, String> Prefixes{};
 		struct _LBlock {
@@ -191,7 +193,7 @@ namespace Slyvina {
 #pragma region Scan
 			QCol->Doing("Scanning", TDir);
 			for (auto a : *SylDir) {
-				auto ad{ ExtractDir(a) }, ae{ Upper(ExtractExt(a)) }; 
+				auto ad{ ExtractDir(a) }, ae{ Upper(ExtractExt(a)) };
 				auto Known{ SylCfg->BoolValue(a,"Known") }, Allow{ (!VecHasString(SylCfg->List(":Dirs:","Ignore"),ad)) && Prefixes.count(ae) };
 				//std::cout << "DEBUG: " << Known << Allow << (!VecHasString(SylCfg->List(":Dirs:", "Ignore"), ad)) << Prefixes.count(ae) << ": " << a << "/" << ad << "/" << ae << "\n";
 				if (!Allow) continue;
@@ -345,12 +347,20 @@ namespace Slyvina {
 }
 
 int main(int arglen, char** args) {
+    using namespace Slyvina;
 	using namespace Slyvina::Syldeyn;
+	SyldeynConfig = LoadOptGINIE(Dirry("$AppSupport$/Syldeyn.ini"),Dirry("$AppSupport$/Syldeyn.ini"),"Syldeyn global config!\n(c) Jeroen P. Broks");
+	SyldeynConfig->NewValue("Alg","Creation",CurrentDate());
 	QCol->Magenta("Syldeyn\t");
+	QCol->LBlue(Platform()+"\t");
 	QCol->LGreen("Build: " __DATE__ "\n");
 	QCol->Yellow("(c) Copyright Jeroen P. Broks\n\n");
 	SylInit_zlib();
+#ifdef SlyvWindows
 	SyldeynDir = ExtractDir(args[0]);
+#elif defined(SlyvLinux)
+    SyldeynDir = Ask(SyldeynConfig,"Directories::"+Slyvina::Platform(),"Data","I need extra data files! Where to find them: ",ExtractDir(args[0]));
+#endif // defined
 	GetPrefixes();
 	GetBlocks();
 	if (arglen <= 1) Process(CurrentDir());
