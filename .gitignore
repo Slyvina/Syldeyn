@@ -14,3 +14,7 @@ MKL_*
 LinuxExe
 /Syldeyn_Import/bin
 /Syldeyn_Import/obj
+
+# No compiled stuff from Code::Blocks
+bin
+obj
