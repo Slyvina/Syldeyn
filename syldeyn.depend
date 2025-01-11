@@ -1,0 +1,134 @@
+# depslib dependency file v1.0
+1729444312 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Tools/Syldeyn/Syldeyn/Syldeyn.cpp
+	"Syldeyn_Config.hpp"
+	<SlyvQCol.hpp>
+	<SlyvString.hpp>
+	<SlyvStream.hpp>
+	<SlyvAsk.hpp>
+	<SlyvTime.hpp>
+	<JCR6_Core.hpp>
+	<JCR6_Write.hpp>
+	<SlyvDir.hpp>
+	<SlyvSilly.hpp>
+	<SlyvRoman.hpp>
+
+1728511406 /media/tricky/Scyndi/Projects/Applications/Slyvina/Tools/Syldeyn/Syldeyn/Syldeyn_Config.hpp
+	<Slyvina.hpp>
+	<Slyvina.hpp>
+	<JCR6_zlib.hpp>
+
+1730326324 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvQCol.cpp
+	<Slyvina.hpp>
+	<Windows.h>
+	<iostream>
+	<SlyvQCol.hpp>
+	<SlyvString.hpp>
+
+1690038300 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/DieParse.cpp
+	<DieParse.hpp>
+	<SlyvRandom.hpp>
+	<SlyvString.hpp>
+	<iostream>
+	<iostream>
+
+1728379930 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvRoman.cpp
+	<string>
+	<math.h>
+
+1732525618 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvString.cpp
+	<cstdarg>
+	<cstring>
+	<SlyvString.hpp>
+
+1733600630 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvTime.cpp
+	<string>
+	<time.h>
+	"SlyvTime.hpp"
+	<Slyvina.hpp>
+
+1730970872 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvBank.cpp
+	<SlyvEndian.hpp>
+	<SlyvBank.hpp>
+
+1736462752 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvDir.cpp
+	<algorithm>
+	<iostream>
+	<SlyvDir.hpp>
+	<SlyvString.hpp>
+	<SlyvStream.hpp>
+	<Windows.h>
+	<filesystem>
+	<sys/stat.h>
+
+1673253082 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvDirry.cpp
+	<SlyvDirry.hpp>
+	<SlyvString.hpp>
+	<map>
+	<stdlib.h>
+	<iostream>
+
+1735669478 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvStream.cpp
+	<windows.h>
+	<direct.h>
+	<filesystem>
+	"../Headers/SlyvDir.hpp"
+	<sys/stat.h>
+	<unistd.h>
+	<stdio.h>
+	<string>
+	<fstream>
+	<vector>
+	<iostream>
+	<filesystem>
+	<Slyvina.hpp>
+	<SlyvString.hpp>
+	<SlyvStream.hpp>
+	<SlyvTime.hpp>
+
+1728376346 /media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Headers/SlyvDir.hpp
+	"Slyvina.hpp"
+
+1729442166 /media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Headers/Slyvina.hpp
+	<memory>
+	<string>
+	<iostream>
+	<algorithm>
+	<map>
+	<vector>
+	<TargetConditionals.h>
+
+1729442166 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvAsk.cpp
+	<iostream>
+	<SlyvAsk.hpp>
+	<SlyvString.hpp>
+	<SlyvConInput.hpp>
+	<SlyvSTOI.hpp>
+
+1732447906 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/Units/Source/SlyvSTOI.cpp
+	<iostream>
+	<string>
+	<SlyvString.hpp>
+	<math.h>
+	"SlyvSTOI.hpp"
+
+1735669464 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/JCR6/Source/JCR6_JQL.cpp
+	<string.h>
+	<string>
+	<memory>
+	<JCR6_Core.hpp>
+	<SlyvDir.hpp>
+	<SlyvString.hpp>
+	<SlyvStream.hpp>
+	<SlyvBank.hpp>
+	<iostream>
+
+1732447826 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/JCR6/Source/JCR6_Core.cpp
+	<cstring>
+	<SlyvString.hpp>
+	<SlyvStream.hpp>
+	<SlyvBank.hpp>
+	<JCR6_Core.hpp>
+
+1736594390 source:/media/tricky/Scyndi/Projects/Applications/Slyvina/Libs/JCR6/Source/JCR6_Write.cpp
+	<JCR6_Write.hpp>
+
